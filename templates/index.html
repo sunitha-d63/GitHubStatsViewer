@@ -1,0 +1,16 @@
+<!-- templates/index.html -->
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="text-center">
+  <h1>Welcome to your GitHub Stats Viewer</h1>
+  {% if session.github_token %}
+    <p>You are logged in. <a href="{{ url_for('dashboard') }}">Go to Dashboard</a></p>
+  {% else %}
+    <a class="btn btn-lg btn-primary mt-4" href="{{ url_for('login') }}">
+      Login with GitHub
+    </a>
+  {% endif %}
+</div>
+{% endblock %}

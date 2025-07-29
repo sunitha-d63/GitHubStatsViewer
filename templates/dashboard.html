@@ -1,0 +1,27 @@
+<!-- templates/dashboard.html -->
+{% extends "layout.html" %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h2>Hello, {{ user_login }}!</h2>
+<table class="table table-striped mt-4">
+  <thead>
+    <tr>
+      <th>Repository</th>
+      <th>Stars</th>
+      <th>Commits</th>
+      <th>Top Language</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for repo in stats %}
+      <tr>
+        <td>{{ repo.name }}</td>
+        <td>{{ repo.stars }}</td>
+        <td>{{ repo.commits }}</td>
+        <td>{{ repo.languages | sort_items | last | first | default('N/A') }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
